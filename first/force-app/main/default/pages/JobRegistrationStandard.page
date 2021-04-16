@@ -1,0 +1,48 @@
+<apex:page standardController="Job_Vikas__c" id="page" > 
+    
+    <apex:stylesheet value="{!URLFOR($Resource.Application_CSS, 'JobRegistrationCustom.css')}"/>
+    
+    <!-- <apex:stylesheet value="{!$Resource.JobRegistrationCustom}"/> -->
+    <apex:includeScript value="{!$Resource.JobRegJs}"/>
+   
+    <apex:form id="theForm">                              
+        <apex:pageBlock mode="edit" id="thePageBlock" title="Job Wizard with Standard Controller" >  
+            <div class="outerDiv"> 
+                <apex:pageBlockSection >
+                    <div class="myDiv">
+                        <apex:image url="{!URLFOR($Resource.Application_Image)}" styleClass="apxImg" />
+                    </div>                  
+                </apex:pageBlockSection>
+                <hr/>
+                <apex:pageBlockSection id="pbInput"  >
+                    
+                    <apex:inputField value="{!Job_Vikas__c.Name}"        id="jName" styleClass="inField" />
+                    <apex:inputField value="{!Job_Vikas__c.Job_Type__c}" id="jType" styleClass="inField"/>
+                    <apex:inputField value="{!Job_Vikas__c.Manager1__c}" id="jManager" styleClass="inField"/>
+                    <apex:inputField value="{!Job_Vikas__c.Number_of_Positions__c}" id="jPositions" styleClass="inField"/>
+                    <apex:inputField value="{!Job_Vikas__c.Required_Skills__c}"     id="jSkills" styleClass="inField"/>
+                    <apex:inputField value="{!Job_Vikas__c.Salary_Offered__c}"      id="jSalaryOffered" styleClass="inField"/>
+                    <apex:inputField value="{!Job_Vikas__c.Certification_Required__c}"  id="jCertification" styleClass="inField"/>
+                    <apex:inputField value="{!Job_Vikas__c.Qualification_Required__c }" id="jQualification" styleClass="inField"/>
+                    <apex:inputField value="{!Job_Vikas__c.Expires_On__c}" id="jExpiry" styleClass="inField"/>
+                </apex:pageBlockSection>
+                <hr/>
+                <div class="btnDiv">                          
+                    <apex:commandButton styleClass="btn" id="btn" value="save" onclick="validate('{!$Component.theForm.thePageBlock.pbInput.jName}',
+                                                                                              '{!$Component.theForm.thePageBlock.pbInput.jType}',
+                                                                                              '{!$Component.theForm.thePageBlock.pbInput.jManager}',
+                                                                                              '{!$Component.theForm.thePageBlock.pbInput.jPositions}',
+                                                                                              '{!$Component.theForm.thePageBlock.pbInput.jSalaryOffered}',
+                                                                                        	  '{!$Component.theForm.thePageBlock.pbInput.jExpiry}',
+                                                                                        	  '{!$Component.theForm.thePageBlock.pbInput.jSkills}',
+                                                                                              '{!$Component.theForm.thePageBlock.pbInput.jQualification}',
+                                                                                        	  '{!$Component.theForm.thePageBlock.pbInput.jCertification}')"
+                                                                                               action="{!save}" 	/>
+                    <apex:actionFunction name="save" reRender="true"/>
+                    <!-- <apex:commandButton styleClass="btn" id="btn1"   value="Save"  action="{!save}" />-->
+                </div>
+                
+            </div>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

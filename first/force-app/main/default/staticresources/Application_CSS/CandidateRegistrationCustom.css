@@ -1,0 +1,55 @@
+h1 {
+    color : red;
+}
+
+
+#myClass {
+    color : blue;
+}
+#pbInput {
+    padding:20px;
+    margin:20px;
+}
+
+.myDiv {
+    text-align:center;
+    
+}
+.titleDiv{
+    font-family:"Times New Roman", Times, serif;
+    font-size:18px;
+    font-style:bold;
+    
+}
+.outerDiv {
+    
+    margin-top: 20px;
+    border-style:solid;
+    border-width:1px;
+    border-color:gray;
+    border-radius:8px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color:lightgray;
+}
+.btnDiv{
+    text-align:center;
+    margin-top: 20px;
+    
+}
+.apxImg{
+    height:60px; 
+    width:200px;
+}
+.inField{
+  	display: block;
+    border-width:1px;
+  	box-sizing: border-box;
+}
+.btn {
+  border-radius: 5px !important;
+  padding:10px !important;
+  text-align: center !important;
+  font-size: 16px !important;
+  margin-bottom:5px !important;
+	}

@@ -1,0 +1,27 @@
+<apex:component >
+    <apex:attribute name="records" type="sobject[]" required="true" description=""/>
+    <apex:attribute name="fields" type="string[]" required="true" description=""/>
+
+        <table border="2"  >
+        <tr>
+        	<th> Name</th>
+            <th> Job_Type</th>
+            <th> Number_of_Positions</th>
+            <th> Qualification_Required</th>
+            <th> Required_Skills</th>
+            <th> Salary_Offered</th>
+            <th> Certification_Required</th>
+            <th> Manager</th>
+
+        </tr>
+        <apex:repeat var="item" value="{!records}">
+            <tr>
+                <apex:repeat var="fieldItem" value="{!fields}">
+                    <td>{!item[fieldItem]}</td>
+                </apex:repeat> 
+            </tr>
+        </apex:repeat> 
+    </table>
+    
+    
+</apex:component>

@@ -1,0 +1,51 @@
+<apex:page controller="ViewJobController">
+
+   <apex:form >
+       
+       <apex:selectList value="{!selectedJob}"  multiselect="false" size="1" >
+          <apex:selectOptions value="{!jobOptions}"></apex:selectOptions>
+      		    <apex:actionSupport event="onchange" reRender="MakesField" action="{!getData}"/>
+
+       </apex:selectList>
+       
+       <apex:outputPanel id="MakesField">
+
+       <apex:pageBlock title="Job Details" rendered="{!rend1}">
+           <c:RelatedListComponent records="{!records}" fields="{!fields}"></c:RelatedListComponent>
+           
+           <apex:commandButton action="{!searchFunction}" value="Search"  reRender="thePanelWrapper" id="theCommandLink"/>
+			<apex:outputPanel id="thePanelWrapper">
+           <apex:pageBlockTable id="pbt" value="{!candidateRecords}" var="detail" rendered="{! rend}">
+             <apex:column >
+              <apex:facet name="header">First Name</apex:facet>
+              <apex:outputText value="{!detail.First_Name__c}"/>
+          </apex:column>
+               <apex:column >
+              <apex:facet name="header">Last Name</apex:facet>
+              <apex:outputText value="{!detail.Last_Name__c}"/>
+          </apex:column>
+          <apex:column >
+              <apex:facet name="header">Email</apex:facet>
+              <apex:outputText value="{!detail.Email__c}"/>
+          </apex:column>
+           <apex:column >
+              <apex:facet name="header">Status</apex:facet>
+              <apex:outputText value="{!detail.Status__c}"/>
+          </apex:column>
+           <apex:column >
+              <apex:facet name="header">Job Name</apex:facet>
+              <apex:outputText value="{!detail.Name__c}"/>
+          </apex:column>
+           <apex:column >
+              <apex:facet name="header">Job Type</apex:facet>
+              <apex:outputText value="{!detail.Job_Type__c}"/>
+          </apex:column>
+
+           </apex:pageBlockTable>
+                </apex:outputPanel>
+       
+     </apex:pageBlock>
+       </apex:outputPanel>
+
+       </apex:form>      
+</apex:page>

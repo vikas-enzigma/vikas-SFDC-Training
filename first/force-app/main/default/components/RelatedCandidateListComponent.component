@@ -1,0 +1,24 @@
+<apex:component >
+    <apex:attribute name="records" type="String" description="TODO: Describe me"/>
+    <apex:attribute name="candidateRecords" type="sobject[]" required="true" description=""/>
+    <apex:attribute name="candidateFields" type="string[]" required="true" description=""/>
+
+        <table border="2"  >
+        <tr>
+        	<th> Name</th>
+            <th> Full_Name__c</th>
+            <th> Email__c</th>
+            <th> Age__c</th>
+            
+        </tr>
+        <apex:repeat var="item" value="{!candidateRecords}">
+            <tr>
+                <apex:repeat var="fieldItem" value="{!candidateFields}">
+                    <td>{!item[fieldItem]}</td>
+                </apex:repeat> 
+            </tr>
+        </apex:repeat> 
+    </table>
+    
+    
+</apex:component>

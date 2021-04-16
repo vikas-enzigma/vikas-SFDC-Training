@@ -1,0 +1,50 @@
+<apex:page controller="CandidateRegCustController" >
+    <apex:stylesheet value="{!URLFOR($Resource.Application_CSS, 'CandidateRegistrationCustom.css')}"/>
+
+    <!-- <apex:stylesheet value="{!$Resource.JobRegistrationCustom}"/> -->
+    <apex:includeScript value="{!$Resource.CandidateRegJS}"/>
+    <apex:form id="theForm" >                              
+        <apex:pageBlock mode="edit" id="thePageBlock" title="Candidate Wizard with custom Controller" >  
+            <div class="outerDiv"> 
+                <apex:pageBlockSection >
+                    <div class="myDiv">
+                        <apex:image url="{!URLFOR($Resource.Application_Image)}" styleClass="apxImg" />
+                    </div>                  
+                </apex:pageBlockSection>
+                <hr/>
+                <apex:pageBlockSection id="pbInput"  >
+                    <apex:inputField value="{!candidate.Name}" styleClass="inField" id="cname"/> 
+                    <apex:inputField value="{!candidate.Salutation__c}" styleClass="inField" id="csalut"/> 
+                    <apex:inputField value="{!candidate.First_Name__c}" styleClass="inField" id="cfirst"/>
+                    <apex:inputField value="{!candidate.Last_Name__c}" styleClass="inField" id="clast"/> 
+                    <apex:inputField value="{!candidate.DOB__c}" styleClass="inField" id="cdob"/>
+                    <apex:inputField value="{!candidate.Email__c}" styleClass="inField" id="cemail"/> 
+                    <apex:inputField value="{!candidate.Expected_Salary__c}" styleClass="inField" id="csalary"/> 
+                    <apex:inputField value="{!candidate.Name__c}" styleClass="inField" id="cjob"/> 
+                    <apex:inputField value="{!candidate.Country__c}" styleClass="inField" id="ccountry"/> 
+                    <apex:inputField value="{!candidate.State__c}" styleClass="inField" id="cstate"/>
+                    <apex:inputField value="{!candidate.Status__c}" styleClass="inField" id="cstatus"/>
+                    <apex:inputField value="{!candidate.Application_Date__c}" styleClass="inField" id="cdate"/>
+                </apex:pageBlockSection>
+                <hr/>
+                <div class="btnDiv">                          
+                    <apex:commandButton styleClass="btn" id="btn" value="save" onclick="validate('{!$Component.theForm.thePageBlock.pbInput.cname}',
+                                                                                              '{!$Component.theForm.thePageBlock.pbInput.csalut}',
+                                                                                              '{!$Component.theForm.thePageBlock.pbInput.cfirst}',
+                                                                                              '{!$Component.theForm.thePageBlock.pbInput.clast}',
+                                                                                              '{!$Component.theForm.thePageBlock.pbInput.cdob}',
+                                                                                        	  '{!$Component.theForm.thePageBlock.pbInput.cemail}',
+                                                                                        	  '{!$Component.theForm.thePageBlock.pbInput.csalary}',
+                                                                                              '{!$Component.theForm.thePageBlock.pbInput.cjob}',
+                                                                                        	  '{!$Component.theForm.thePageBlock.pbInput.ccountry}',
+                                                                                        	  '{!$Component.theForm.thePageBlock.pbInput.cstate}',
+                                                                                              '{!$Component.theForm.thePageBlock.pbInput.cstatus}',
+                                                                                        	  '{!$Component.theForm.thePageBlock.pbInput.cdate}')"
+                                                                                               action="{!save}" />
+                    <apex:actionFunction name="save" reRender="true"/>                  
+                </div>
+                
+            </div>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

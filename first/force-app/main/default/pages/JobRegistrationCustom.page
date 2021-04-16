@@ -1,0 +1,45 @@
+<apex:page controller="JobRegistrationCustomController" > 
+    
+   <apex:stylesheet value="{!URLFOR($Resource.Application_CSS, 'JobRegistrationCustom.css')}"/>
+	<apex:includeScript value="{!$Resource.JobRegJs}"/>
+   
+    <apex:form id="theForm" >                              
+        <apex:pageBlock mode="edit" id="thePageBlock" title="Job Wizard with Custom Controller" >  
+            <div class="outerDiv"> 
+                <apex:pageBlockSection >
+                    <div class="myDiv">
+                        <apex:image url="{!URLFOR($Resource.Application_Image)}" styleClass="apxImg" />
+                    </div>                  
+                </apex:pageBlockSection>
+                <hr/>
+                <apex:pageBlockSection id="pbInput"  >
+                    
+                    <apex:inputField value="{!job.Name}"        id="jName"    styleClass="inField" />
+                    <apex:inputField value="{!job.Job_Type__c}" id="jType"    styleClass="inField"/>
+                    <apex:inputField value="{!job.Manager1__c}" id="jManager" styleClass="inField"/>
+                    <apex:inputField value="{!job.Number_of_Positions__c}" id="jPositions" styleClass="inField"/>
+                    <apex:inputField value="{!job.Required_Skills__c}"     id="jSkills"    styleClass="inField"/>
+                    <apex:inputField value="{!job.Salary_Offered__c}"      id="jSalaryOffered"     styleClass="inField"/>
+                    <apex:inputField value="{!job.Certification_Required__c}"  id="jCertification" styleClass="inField"/>
+                    <apex:inputField value="{!job.Qualification_Required__c }" id="jQualification" styleClass="inField"/>
+                    <apex:inputField value="{!job.Expires_On__c}" id="jExpiry" styleClass="inField"/>
+                </apex:pageBlockSection>
+                <hr/>
+                <div class="btnDiv">                          
+                    <apex:commandButton styleClass="btn" id="btn" value="save" onclick="validate('{!$Component.theForm.thePageBlock.pbInput.jName}',
+                                                                                              '{!$Component.theForm.thePageBlock.pbInput.jType}',
+                                                                                              '{!$Component.theForm.thePageBlock.pbInput.jManager}',
+                                                                                              '{!$Component.theForm.thePageBlock.pbInput.jPositions}',
+                                                                                              '{!$Component.theForm.thePageBlock.pbInput.jSalaryOffered}',
+                                                                                        	  '{!$Component.theForm.thePageBlock.pbInput.jExpiry}',
+                                        													  '{!$Component.theForm.thePageBlock.pbInput.jSkills}',
+                                                                                              '{!$Component.theForm.thePageBlock.pbInput.jQualification}',
+                                                                                        	  '{!$Component.theForm.thePageBlock.pbInput.jCertification}')"
+                                        														action="{!save}"	/>
+                    <apex:actionFunction name="save" reRender="true"/>                
+                </div>
+                
+            </div>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>
